@@ -6,8 +6,7 @@ let theThumbnails = document.querySelectorAll('#buttonHolder img'),
     resetPieces = document.querySelectorAll('.reset-pieces');
 
 // functions
-
-            //bug 2 here!!!
+                //bug 2 & 3 here!!!
 function changeImageSet() {
     gameBoard.style.backgroundImage = `url(images/backGround${this.dataset.bgref}.jpg)`;
 }
@@ -19,18 +18,14 @@ function allowDrag(e) {
     e.dataTransfer.setData('draggedEl', this.id);
 }
 
-
-
 function allowDragOver(e) {
 e.preventDefault();
 console.log('dragging over drop zone!');
 }
 
-            //bug 1 here!!!
+                //bug 1 here!!!
 function allowDrop(e) {
     e.preventDefault();
-
-
 
     // gets the dragged element's (El) ID from the data transfer object (using 'draggedEl')
     let droppedElId = e.dataTransfer.getData('draggedEl');
@@ -40,12 +35,11 @@ function allowDrop(e) {
     
     // append the dragged element to the drop zone
     this.appendChild(droppedEl);
+
+    
 }
 
-
-
 // event listeners
-
 theThumbnails.forEach(thumbnail => thumbnail.addEventListener('click', changeImageSet));
 pzlPieces.forEach(piece => piece.addEventListener('dragstart', allowDrag));
 dropZones.forEach(zone => {
