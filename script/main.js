@@ -3,12 +3,25 @@ let theThumbnails = document.querySelectorAll('#buttonHolder img'),
     gameBoard = document.querySelector('.puzzle-board'),
     pzlPieces = document.querySelectorAll('.puzzle-pieces img'),
     dropZones = document.querySelectorAll('.drop-zone'),
-    resetPieces = document.querySelectorAll('.reset-pieces');
+    resetPieces = document.querySelector('.puzzle-pieces');
+    //I see there is already a resetPieces, assumung it is for bug 2?
 
 // functions
-                //bug 2 & 3 here!!!
+                //bug 2 was here!!!
+                //bug 3 here!!!
 function changeImageSet() {
     gameBoard.style.backgroundImage = `url(images/backGround${this.dataset.bgref}.jpg)`;
+
+    //what i was thinking here, something like "when this happens, also do this... then it would be like reset to default/return all pieces." I saw a section called "do...while" which to me at first I would guess it's "do this while this is happening" and not like "if this happens, do this".. but I don't think it would work so I just left it for now.
+
+    // i tried just doing return (pzlPieces); thinking it would like reset it all, but it didn't work... i know i have to keep it within this function...
+
+    pzlPieces.forEach(piece => resetPieces.appendChild(piece));
+    
+    //classmate helped me with this part, wanted to ask of that is okay and if i can cite my classmate instead? if not i can always try a new way.
+    //i wanted to use resetPieces that we did in these files (was there at the start connected to '.reset-pieces'), but quickly realized that would not help me because i had no idea where to put it. so i got rid of it and focused on plzPieces
+    //since i had to collect all pieces, use forEach, then call it pieces... resetPieces is the container i want the objects to go (connected to .puzzle-pieces, the default spot where the pieces first were before dragging anything) the to move those pieces you need to appendChild, the what you are appending is (piece)
+
 }
 
 function allowDrag(e) {
@@ -23,7 +36,7 @@ e.preventDefault();
 console.log('dragging over drop zone!');
 }
 
-                //bug 1 here!!!
+                //bug was 1 here!!!
 function allowDrop(e) {
     e.preventDefault();
     const dropZone = e.currentTarget;
